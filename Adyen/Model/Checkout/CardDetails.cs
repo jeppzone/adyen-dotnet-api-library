@@ -128,10 +128,7 @@ namespace Adyen.Model.Checkout
         /// <param name="storedPaymentMethodId">This is the &#x60;recurringDetailReference&#x60; returned in the response when you created the token..</param>
         /// <param name="threeDS2SdkVersion">Required for mobile integrations. Version of the 3D Secure 2 mobile SDK..</param>
         /// <param name="type">Default payment method details. Common for scheme payment methods, and for simple payment method details. (default to TypeEnum.Scheme).</param>
-        public CardDetails(string brand = default(string), string checkoutAttemptId = default(string), string cupsecureplusSmscode = default(string), string cvc = default(string), string encryptedCardNumber = default(string), string encryptedExpiryMonth = default(string), string encryptedExpiryYear = default(string), string encryptedSecurityCode = default(string), string expiryMonth = default(string), string expiryYear = default(string), FundingSourceEnum? fundingSource = default(FundingSourceEnum?), string holderName = default(string), string networkPaymentReference = default(string), string number = default(string), string recurringDetailReference = default(string), string shopperNotificationReference = default(string), string storedPaymentMethodId = default(string), string threeDS2SdkVersion = default(string), TypeEnum? type = TypeEnum.Scheme,       string srcScheme = null,
-            string srcCorrelationId = null,
-            string srcTokenReference = null,
-            string srcDigitalCardId = null)
+        public CardDetails(string brand = default(string), string checkoutAttemptId = default(string), string cupsecureplusSmscode = default(string), string cvc = default(string), string encryptedCardNumber = default(string), string encryptedExpiryMonth = default(string), string encryptedExpiryYear = default(string), string encryptedSecurityCode = default(string), string expiryMonth = default(string), string expiryYear = default(string), FundingSourceEnum? fundingSource = default(FundingSourceEnum?), string holderName = default(string), string networkPaymentReference = default(string), string number = default(string), string recurringDetailReference = default(string), string shopperNotificationReference = default(string), string storedPaymentMethodId = default(string), string threeDS2SdkVersion = default(string), TypeEnum? type = TypeEnum.Scheme, string srcScheme = default(string), string srcCorrelationId = default(string), string srcTokenReference = default(string), string srcDigitalCardId = default(string))
         {
             this.Brand = brand;
             this.CheckoutAttemptId = checkoutAttemptId;
@@ -451,38 +448,32 @@ namespace Adyen.Model.Checkout
                     this.ShopperNotificationReference == input.ShopperNotificationReference ||
                     (this.ShopperNotificationReference != null &&
                      this.ShopperNotificationReference.Equals(input.ShopperNotificationReference))
-                )
-                &&
+                ) &&
                 (
                     this.SrcCorrelationId == input.SrcCorrelationId ||
                     (this.SrcCorrelationId != null &&
                      this.SrcCorrelationId.Equals(input.SrcCorrelationId))
-                )
-                &&
+                ) &&
                 (
                     this.SrcDigitalCardId == input.SrcDigitalCardId ||
                     (this.SrcDigitalCardId != null &&
                      this.SrcDigitalCardId.Equals(input.SrcDigitalCardId))
-                )
-                &&
+                ) &&
                 (
                     this.SrcScheme == input.SrcScheme ||
                     (this.SrcScheme != null &&
                      this.SrcScheme.Equals(input.SrcScheme))
-                )
-                &&
+                ) &&
                 (
                     this.SrcTokenReference == input.SrcTokenReference ||
                     (this.SrcTokenReference != null &&
                      this.SrcTokenReference.Equals(input.SrcTokenReference))
-                )
-                &&
+                ) &&
                 (
                     this.StoredPaymentMethodId == input.StoredPaymentMethodId ||
                     (this.StoredPaymentMethodId != null &&
                      this.StoredPaymentMethodId.Equals(input.StoredPaymentMethodId))
-                ) 
-                &&
+                ) &&
                 (
                     this.ThreeDS2SdkVersion == input.ThreeDS2SdkVersion ||
                     (this.ThreeDS2SdkVersion != null &&
