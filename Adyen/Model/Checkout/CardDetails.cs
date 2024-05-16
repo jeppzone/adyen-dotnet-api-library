@@ -128,7 +128,10 @@ namespace Adyen.Model.Checkout
         /// <param name="storedPaymentMethodId">This is the &#x60;recurringDetailReference&#x60; returned in the response when you created the token..</param>
         /// <param name="threeDS2SdkVersion">Required for mobile integrations. Version of the 3D Secure 2 mobile SDK..</param>
         /// <param name="type">Default payment method details. Common for scheme payment methods, and for simple payment method details. (default to TypeEnum.Scheme).</param>
-        public CardDetails(string brand = default(string), string checkoutAttemptId = default(string), string cupsecureplusSmscode = default(string), string cvc = default(string), string encryptedCardNumber = default(string), string encryptedExpiryMonth = default(string), string encryptedExpiryYear = default(string), string encryptedSecurityCode = default(string), string expiryMonth = default(string), string expiryYear = default(string), FundingSourceEnum? fundingSource = default(FundingSourceEnum?), string holderName = default(string), string networkPaymentReference = default(string), string number = default(string), string recurringDetailReference = default(string), string shopperNotificationReference = default(string), string storedPaymentMethodId = default(string), string threeDS2SdkVersion = default(string), TypeEnum? type = TypeEnum.Scheme)
+        public CardDetails(string brand = default(string), string checkoutAttemptId = default(string), string cupsecureplusSmscode = default(string), string cvc = default(string), string encryptedCardNumber = default(string), string encryptedExpiryMonth = default(string), string encryptedExpiryYear = default(string), string encryptedSecurityCode = default(string), string expiryMonth = default(string), string expiryYear = default(string), FundingSourceEnum? fundingSource = default(FundingSourceEnum?), string holderName = default(string), string networkPaymentReference = default(string), string number = default(string), string recurringDetailReference = default(string), string shopperNotificationReference = default(string), string storedPaymentMethodId = default(string), string threeDS2SdkVersion = default(string), TypeEnum? type = TypeEnum.Scheme,       string srcScheme = null,
+            string srcCorrelationId = null,
+            string srcTokenReference = null,
+            string srcDigitalCardId = null)
         {
             this.Brand = brand;
             this.CheckoutAttemptId = checkoutAttemptId;
@@ -149,6 +152,10 @@ namespace Adyen.Model.Checkout
             this.StoredPaymentMethodId = storedPaymentMethodId;
             this.ThreeDS2SdkVersion = threeDS2SdkVersion;
             this.Type = type;
+            this.SrcScheme = srcScheme;
+            this.SrcDigitalCardId = srcDigitalCardId;
+            this.SrcCorrelationId = srcCorrelationId;
+            this.SrcTokenReference = srcTokenReference;
         }
 
         /// <summary>
@@ -256,6 +263,34 @@ namespace Adyen.Model.Checkout
         /// <value>The &#x60;shopperNotificationReference&#x60; returned in the response when you requested to notify the shopper. Used only for recurring payments in India.</value>
         [DataMember(Name = "shopperNotificationReference", EmitDefaultValue = false)]
         public string ShopperNotificationReference { get; set; }
+        
+        /// <summary>
+        /// Click To Pay Correlation Id.
+        /// </summary>
+        /// <value>Click To Pay Correlation Id.</value>
+        [DataMember(Name = "srcCorrelationId", EmitDefaultValue = false)]
+        public string SrcCorrelationId {get;set;}
+        
+        /// <summary>
+        /// Click To Pay Digital Card Id.
+        /// </summary>
+        /// <value>Click To Pay Digital Card Id.</value>
+        [DataMember(Name = "srcDigitalCardId", EmitDefaultValue = false)]
+        public string SrcDigitalCardId { get; set; }
+        
+        /// <summary>
+        /// Click To Pay Card Source Scheme.
+        /// </summary>
+        /// <value>Click To Pay Card Source Scheme.</value>
+        [DataMember(Name = "srcScheme", EmitDefaultValue = false)]
+        public string SrcScheme { get; set; }
+        
+        /// <summary>
+        /// Click To Pay Token Reference.
+        /// </summary>
+        /// <value>Click To Pay Token Reference.</value>
+        [DataMember(Name = "srcTokenReference", EmitDefaultValue = false)]
+        public string SrcTokenReference { get;set;}
 
         /// <summary>
         /// This is the &#x60;recurringDetailReference&#x60; returned in the response when you created the token.
@@ -295,6 +330,10 @@ namespace Adyen.Model.Checkout
             sb.Append("  Number: ").Append(Number).Append("\n");
             sb.Append("  RecurringDetailReference: ").Append(RecurringDetailReference).Append("\n");
             sb.Append("  ShopperNotificationReference: ").Append(ShopperNotificationReference).Append("\n");
+            sb.Append("  SrcCorrelationId: ").Append(SrcCorrelationId).Append("\n");
+            sb.Append("  SrcDigitalCardId: ").Append(SrcDigitalCardId).Append("\n");
+            sb.Append("  SrcScheme: ").Append(SrcScheme).Append("\n");
+            sb.Append("  SrcTokenReference: ").Append(SrcTokenReference).Append("\n");
             sb.Append("  StoredPaymentMethodId: ").Append(StoredPaymentMethodId).Append("\n");
             sb.Append("  ThreeDS2SdkVersion: ").Append(ThreeDS2SdkVersion).Append("\n");
             sb.Append("  Type: ").Append(Type).Append("\n");
@@ -332,96 +371,123 @@ namespace Adyen.Model.Checkout
             {
                 return false;
             }
-            return 
+
+            return
                 (
                     this.Brand == input.Brand ||
                     (this.Brand != null &&
-                    this.Brand.Equals(input.Brand))
-                ) && 
+                     this.Brand.Equals(input.Brand))
+                ) &&
                 (
                     this.CheckoutAttemptId == input.CheckoutAttemptId ||
                     (this.CheckoutAttemptId != null &&
-                    this.CheckoutAttemptId.Equals(input.CheckoutAttemptId))
-                ) && 
+                     this.CheckoutAttemptId.Equals(input.CheckoutAttemptId))
+                ) &&
                 (
                     this.CupsecureplusSmscode == input.CupsecureplusSmscode ||
                     (this.CupsecureplusSmscode != null &&
-                    this.CupsecureplusSmscode.Equals(input.CupsecureplusSmscode))
-                ) && 
+                     this.CupsecureplusSmscode.Equals(input.CupsecureplusSmscode))
+                ) &&
                 (
                     this.Cvc == input.Cvc ||
                     (this.Cvc != null &&
-                    this.Cvc.Equals(input.Cvc))
-                ) && 
+                     this.Cvc.Equals(input.Cvc))
+                ) &&
                 (
                     this.EncryptedCardNumber == input.EncryptedCardNumber ||
                     (this.EncryptedCardNumber != null &&
-                    this.EncryptedCardNumber.Equals(input.EncryptedCardNumber))
-                ) && 
+                     this.EncryptedCardNumber.Equals(input.EncryptedCardNumber))
+                ) &&
                 (
                     this.EncryptedExpiryMonth == input.EncryptedExpiryMonth ||
                     (this.EncryptedExpiryMonth != null &&
-                    this.EncryptedExpiryMonth.Equals(input.EncryptedExpiryMonth))
-                ) && 
+                     this.EncryptedExpiryMonth.Equals(input.EncryptedExpiryMonth))
+                ) &&
                 (
                     this.EncryptedExpiryYear == input.EncryptedExpiryYear ||
                     (this.EncryptedExpiryYear != null &&
-                    this.EncryptedExpiryYear.Equals(input.EncryptedExpiryYear))
-                ) && 
+                     this.EncryptedExpiryYear.Equals(input.EncryptedExpiryYear))
+                ) &&
                 (
                     this.EncryptedSecurityCode == input.EncryptedSecurityCode ||
                     (this.EncryptedSecurityCode != null &&
-                    this.EncryptedSecurityCode.Equals(input.EncryptedSecurityCode))
-                ) && 
+                     this.EncryptedSecurityCode.Equals(input.EncryptedSecurityCode))
+                ) &&
                 (
                     this.ExpiryMonth == input.ExpiryMonth ||
                     (this.ExpiryMonth != null &&
-                    this.ExpiryMonth.Equals(input.ExpiryMonth))
-                ) && 
+                     this.ExpiryMonth.Equals(input.ExpiryMonth))
+                ) &&
                 (
                     this.ExpiryYear == input.ExpiryYear ||
                     (this.ExpiryYear != null &&
-                    this.ExpiryYear.Equals(input.ExpiryYear))
-                ) && 
+                     this.ExpiryYear.Equals(input.ExpiryYear))
+                ) &&
                 (
                     this.FundingSource == input.FundingSource ||
                     this.FundingSource.Equals(input.FundingSource)
-                ) && 
+                ) &&
                 (
                     this.HolderName == input.HolderName ||
                     (this.HolderName != null &&
-                    this.HolderName.Equals(input.HolderName))
-                ) && 
+                     this.HolderName.Equals(input.HolderName))
+                ) &&
                 (
                     this.NetworkPaymentReference == input.NetworkPaymentReference ||
                     (this.NetworkPaymentReference != null &&
-                    this.NetworkPaymentReference.Equals(input.NetworkPaymentReference))
-                ) && 
+                     this.NetworkPaymentReference.Equals(input.NetworkPaymentReference))
+                ) &&
                 (
                     this.Number == input.Number ||
                     (this.Number != null &&
-                    this.Number.Equals(input.Number))
-                ) && 
+                     this.Number.Equals(input.Number))
+                ) &&
                 (
                     this.RecurringDetailReference == input.RecurringDetailReference ||
                     (this.RecurringDetailReference != null &&
-                    this.RecurringDetailReference.Equals(input.RecurringDetailReference))
-                ) && 
+                     this.RecurringDetailReference.Equals(input.RecurringDetailReference))
+                ) &&
                 (
                     this.ShopperNotificationReference == input.ShopperNotificationReference ||
                     (this.ShopperNotificationReference != null &&
-                    this.ShopperNotificationReference.Equals(input.ShopperNotificationReference))
-                ) && 
+                     this.ShopperNotificationReference.Equals(input.ShopperNotificationReference))
+                )
+                &&
+                (
+                    this.SrcCorrelationId == input.SrcCorrelationId ||
+                    (this.SrcCorrelationId != null &&
+                     this.SrcCorrelationId.Equals(input.SrcCorrelationId))
+                )
+                &&
+                (
+                    this.SrcDigitalCardId == input.SrcDigitalCardId ||
+                    (this.SrcDigitalCardId != null &&
+                     this.SrcDigitalCardId.Equals(input.SrcDigitalCardId))
+                )
+                &&
+                (
+                    this.SrcScheme == input.SrcScheme ||
+                    (this.SrcScheme != null &&
+                     this.SrcScheme.Equals(input.SrcScheme))
+                )
+                &&
+                (
+                    this.SrcTokenReference == input.SrcTokenReference ||
+                    (this.SrcTokenReference != null &&
+                     this.SrcTokenReference.Equals(input.SrcTokenReference))
+                )
+                &&
                 (
                     this.StoredPaymentMethodId == input.StoredPaymentMethodId ||
                     (this.StoredPaymentMethodId != null &&
-                    this.StoredPaymentMethodId.Equals(input.StoredPaymentMethodId))
-                ) && 
+                     this.StoredPaymentMethodId.Equals(input.StoredPaymentMethodId))
+                ) 
+                &&
                 (
                     this.ThreeDS2SdkVersion == input.ThreeDS2SdkVersion ||
                     (this.ThreeDS2SdkVersion != null &&
-                    this.ThreeDS2SdkVersion.Equals(input.ThreeDS2SdkVersion))
-                ) && 
+                     this.ThreeDS2SdkVersion.Equals(input.ThreeDS2SdkVersion))
+                ) &&
                 (
                     this.Type == input.Type ||
                     this.Type.Equals(input.Type)
@@ -497,6 +563,22 @@ namespace Adyen.Model.Checkout
                 if (this.ShopperNotificationReference != null)
                 {
                     hashCode = (hashCode * 59) + this.ShopperNotificationReference.GetHashCode();
+                }
+                if (this.SrcCorrelationId != null)
+                {
+                    hashCode = (hashCode * 59) + this.SrcCorrelationId.GetHashCode();
+                }
+                if (this.SrcDigitalCardId != null)
+                {
+                    hashCode = (hashCode * 59) + this.SrcDigitalCardId.GetHashCode();
+                }
+                if (this.SrcScheme != null)
+                {
+                    hashCode = (hashCode * 59) + this.SrcScheme.GetHashCode();
+                }
+                if (this.SrcTokenReference != null)
+                {
+                    hashCode = (hashCode * 59) + this.SrcTokenReference.GetHashCode();
                 }
                 if (this.StoredPaymentMethodId != null)
                 {
